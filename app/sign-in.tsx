@@ -1,9 +1,19 @@
 import React from 'react';
 import { View, Text, ScrollView, Image, Touchable, TouchableOpacity, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFonts } from 'expo-font';
 
 const SignIn = () => {
   const handLogin = () => {};
+  const [fontsLoaded] = useFonts({
+    "RubikRegular": require("../assets/fonts/RubikRegular.ttf"),
+    "RubikBold": require("../assets/fonts/RubikBold.ttf"),
+    "RubikMedium": require("../assets/fonts/RubikMedium.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return <Text>Loading fonts...</Text>;
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -13,35 +23,33 @@ const SignIn = () => {
         />
 
         <View style={{ paddingHorizontal: 20}}>
-          <Text 
-          style={styles.welcomeTitle}
-          >
+          <Text style={styles.welcomeTitle}>
             Welcome to Restate!
           </Text>
 
-          <Text
-          style={styles.contentTitle}
-          >
+          <Text style={styles.contentTitle}>
             Let's Get Closer To {'\n'}
             <Text style={{ color: '#93C5FD'}}>
               Your Ideal Home
             </Text>
-          </Text>
 
-          <Text style={styles.contentText}
-            >
+          </Text>
+          
+          <Text style={styles.contentText}>
               Login to ReState with Google
           </Text>
 
             <TouchableOpacity 
             onPress={handLogin}
-            style={styles.googleButton}>
+            style={styles.googleButton}
+            >
               <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                <Image source={require('../assets/images/google-true.png')}
-                  style={styles.googleImage}
-                  />
-                  
-                  <Text style={styles.googleText}>Continue with Google</Text>
+                <Image 
+                source={require('../assets/images/google-true.png')}
+                style={styles.googleImage}
+                />
+                
+                <Text style={styles.googleText}>Continue with Google</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -60,25 +68,24 @@ const styles = StyleSheet.create({
    backgroundImage: {
     width: '100%', 
     height: '66.6667%', 
-    alignSelf: 
-    'center', 
+    alignSelf: 'center', 
     resizeMode: 'contain',
    },
    welcomeTitle: {
-    fontFamily: 'Rubik', 
+    fontFamily: 'RubikRegular', 
     fontSize: 16,
     textAlign: 'center', 
     textTransform: 'uppercase', 
     color: '#191d31'
   },
   contentTitle: {
-    fontFamily: 'Rubik-Bold', 
+    fontFamily: 'RubikBold', 
     fontSize: 24, 
     textAlign: 'center', 
     marginTop: 8
   },
   contentText: {
-    fontFamily: 'Rubik', 
+    fontFamily: 'RubikRegular', 
     fontSize: 16, 
     textAlign: 'center', 
     marginTop: 12
@@ -100,7 +107,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   googleText: {
-    fontFamily: 'Rubik-Medium', 
+    fontFamily: 'RubikMedium', 
     fontSize: 18, 
     color: 'white', 
     marginLeft: 2
