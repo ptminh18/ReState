@@ -6,6 +6,7 @@ import icons from '@/constants/icons';
 import Search from '@/components/Search'
 import { useFonts } from 'expo-font';
 import { Card, FeaturedCards } from '@/components/Cards';
+import Filters from '@/components/Filters';
 
 export default function Index() {
   const [fontsLoaded] = useFonts({
@@ -36,7 +37,8 @@ export default function Index() {
               width: 48, 
               height: 48, 
               borderRadius: 24 
-            }}/>
+            }}
+            />
 
             <View 
             style={{ 
@@ -44,15 +46,18 @@ export default function Index() {
               marginLeft: 8, 
               alignItems: 'flex-start', 
               justifyContent: 'center' 
-            }}>
+            }}
+            >
               <Text style={styles.hi}>Hi!</Text>
               <Text style={styles.name}>David</Text>
 
             </View>
-
           </View>
           
-          <Image source={icons.bell} style={{ width: 24, height: 24 }}/>
+          <Image 
+          source={icons.bell} 
+          style={{ width: 24, height: 24 }}
+          />
         
         </View>
 
@@ -71,16 +76,16 @@ export default function Index() {
             </TouchableOpacity>
 
           </View>
-
-            <View style={{
-              flexDirection: 'row',
-              gap: 10,
-              marginTop: 10,
-            }}
-            >
-              <FeaturedCards/>
-              <FeaturedCards/>
-              <FeaturedCards/>
+          
+          <View style={{
+            flexDirection: 'row',
+            gap: 10,
+            marginTop: 10,
+          }}
+          >
+            <FeaturedCards/>
+            <FeaturedCards/>
+            <FeaturedCards/>
             </View>
         </View>
 
@@ -96,15 +101,17 @@ export default function Index() {
             </TouchableOpacity>
 
           </View>
+          
+          <Filters/>
 
-            <View style={{
-              flexDirection: 'row',
-              gap: 10,
-              marginTop: 10,
-            }}
-            >
-              <Card/>
-              <Card/>
+          <View style={{
+            flexDirection: 'row',
+            gap: 10,
+            marginTop: 10,
+          }}
+          >
+            <Card/>
+            <Card/>
             </View>
       </View>
     </SafeAreaView>
